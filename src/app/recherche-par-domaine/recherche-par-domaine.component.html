@@ -1,0 +1,39 @@
+<div class="container">
+
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+      <label>Domaines</label>
+      <select class="form-control form-control-lg" id="idPro" name="IdDomaine" [(ngModel)]="idPro" (change)="onChange()">
+        <option *ngFor="let g of professions" value="{{g.idPro}}">
+          {{g.nomPro}}
+        </option>
+      </select>
+    </div>
+  
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-striped">
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Profession</th>
+            <th>Domaines</th>
+            <th>Supprimer</th>
+            <th>Modifier</th>
+          </tr>
+          <tbody *ngIf="clients && clients.length > 0">
+            <tr *ngFor="let client of clients">
+              <td>{{client.idClient}}</td>
+              <td>{{client.nomClient}}</td>
+              <td>{{client.ageClient}}</td>
+              <td>{{client.profession.nomPro}}</td>
+              <td><a class="btn btn-danger" (click)="supprimerClient(client)">Supprimer</a></td>
+              <td><a class="btn btn-success" [routerLink]="['/updateClient',client.idClient]">Modifier</a></td>
+            </tr>
+          </tbody>
+          
+        </table>
+      </div>
+    </div>
+  
+  </div>
+  
